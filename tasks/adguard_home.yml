@@ -26,6 +26,7 @@
     owner: "{{ adguard_home_user }}"
     group: "{{ adguard_home_group }}"
     creates: "{{ adguard_home_executable }}"
+  become_user: "{{ adguard_home_user }}"
 
 - name: setup systemd service unit file
   template:
