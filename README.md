@@ -9,3 +9,7 @@ adguard_home_base_path: /opt/adguard_home
 adguard_home_user: pi
 ```
 for more see [defaults](defaults/main.yml)
+
+
+## TODO
+* configuring AdGuardHome.yaml
