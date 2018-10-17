@@ -1,0 +1,39 @@
+---
+- name: ensure user exists
+  user:
+    name: "{{ adguard_home_user }}"
+    state: present
+
+- name: ensure base directory exists
+  file:
+    dest: "{{ adguard_home_base_path }}"
+    owner: "{{ adguard_home_user }}"
+    group: "{{ adguard_home_group }}"
+    recurse: yes
+    state: directory
+
+- name: download adguard-home archive
+  get_url:
+    url: "{{ adguard_home_download_url }}"
+    dest: "{{ adguard_home_tmp_path }}"
+    checksum: "{{ adguard_home_checksum }}"
+
+- name: unarchive adguard-home
+  unarchive:
+    copy: no
+    src: "{{ adguard_home_tmp_path }}/{{ adguard_home_archive }}"
+    dest: "{{ adguard_home_base_path }}"
+    owner: "{{ adguard_home_user }}"
+    group: "{{ adguard_home_group }}"
+    creates: "{{ adguard_home_executable }}"
+
+- name: setup systemd service unit file
+  template:
+    src: adguard-home.service.j2
+    dest: /etc/systemd/system/adguard-home.service
+
+- name: ensure service is started and enabled
+  service:
+    name: adguard-home
+    state: started
+    enabled: yes
