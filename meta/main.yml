@@ -7,9 +7,17 @@ galaxy_info:
   description: "Ansible role to install the ad-blocking DNS-server Adguard Home (https://github.com/AdguardTeam/AdGuardHome)."
   license: MIT
   platforms:
-    - name: GenericLinux
+    - name: Debian
       versions:
-        - all
+      - jessie
+      - stretch
+    - name: Ubuntu
+      versions:
+      - xenial
+      - yakkety
+      - zesty
+      - artful
+      - bionic
   galaxy_tags:
     - adguard
     - dns
