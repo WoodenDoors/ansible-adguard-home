@@ -25,16 +25,16 @@
     dest: "{{ adguard_home_base_path }}"
     owner: "{{ adguard_home_user }}"
     group: "{{ adguard_home_group }}"
-    creates: "{{ adguard_home_executable }}"
   become_user: "{{ adguard_home_user }}"
+  notify: restart adguard-home
 
 - name: setup systemd service unit file
   template:
     src: adguard-home.service.j2
     dest: /etc/systemd/system/adguard-home.service
+  notify: restart adguard-home
 
-- name: ensure service is started and enabled
+- name: ensure service is enabled
   service:
     name: adguard-home
-    state: started
     enabled: yes
