@@ -30,7 +30,9 @@
     url: "{{ adguard_home_download_url }}"
     dest: "{{ adguard_home_tmp_path }}"
     checksum: "{{ adguard_home_checksum }}"
-  when: adguard_home_version_exists_check | changed
+  when: >
+    (not adguard_home_executable_stat.stat.exists)
+    or (adguard_home_version_exists_check | changed)
 
 - name: unarchive adguard-home
   unarchive:
@@ -39,6 +41,7 @@
     dest: "{{ adguard_home_base_path }}"
     owner: "{{ adguard_home_user }}"
     group: "{{ adguard_home_group }}"
+  become: yes
   become_user: "{{ adguard_home_user }}"
   when: adguard_home_version_exists_check | changed
   notify: restart adguard-home
