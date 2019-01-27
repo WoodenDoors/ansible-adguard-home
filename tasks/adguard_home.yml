@@ -29,7 +29,7 @@
   get_url:
     url: "{{ adguard_home_download_url }}"
     dest: "{{ adguard_home_tmp_path }}"
-    checksum: "{{ adguard_home_checksum }}"
+    checksum: "{{ adguard_home_checksum | default(omit, true) }}"
   when: >
     (not adguard_home_executable_stat.stat.exists)
     or (adguard_home_version_exists_check | changed)
