@@ -43,7 +43,9 @@
     group: "{{ adguard_home_group }}"
   become: yes
   become_user: "{{ adguard_home_user }}"
-  when: adguard_home_version_exists_check | changed
+  when: >
+    (not adguard_home_executable_stat.stat.exists)
+    or (adguard_home_version_exists_check | changed)
   notify: restart adguard-home
 
 - name: setup systemd service unit file
