@@ -1,5 +1,5 @@
 ---
-adguard_home_version: '0.96-hotfix'
+adguard_home_version: '0.98.1'
 
 adguard_home_base_path: /opt/adguard_home
 adguard_home_user: root
