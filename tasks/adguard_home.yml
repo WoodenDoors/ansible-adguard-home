@@ -18,11 +18,10 @@
   register: adguard_home_executable_stat
 
 - name: check adguard version if it is already installed
-  command: "{{ adguard_home_executable }} --help"
+  command: "{{ adguard_home_executable }} --version"
   register: adguard_home_version_exists_check
   check_mode: no
-  changed_when: adguard_home_version_exists_check.stderr.find('version v' + adguard_home_version) == -1
-  failed_when: adguard_home_version_exists_check.rc != 64
+  changed_when: adguard_home_version_exists_check.stdout.find('AdGuardHome v' + adguard_home_version) == -1
   when: adguard_home_executable_stat.stat.exists
 
 - name: download adguard-home archive
