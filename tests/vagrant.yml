@@ -4,3 +4,5 @@
 
   roles:
     - role: adguard_home
+      vars:
+        adguard_home_checksum: '' # omit
