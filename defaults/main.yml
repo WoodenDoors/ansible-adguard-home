@@ -7,7 +7,7 @@ adguard_home_user: root
 adguard_home_path: "{{ adguard_home_base_path }}/AdGuardHome"
 adguard_home_executable: "{{ adguard_home_path }}/AdGuardHome"
 adguard_home_group: "{{ adguard_home_user }}"
-adguard_home_host: "{{ ansible_default_ipv4.address }}"
+adguard_home_host: "0.0.0.0"
 adguard_home_arch: "{{ (ansible_architecture == 'x86_64') | ternary('amd64', 'armv7') }}"
 adguard_home_archive: "AdGuardHome_linux_{{ adguard_home_arch }}.tar.gz"
 adguard_home_download_url: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v{{ adguard_home_version }}/{{ adguard_home_archive }}"
