@@ -31,7 +31,7 @@
     checksum: "{{ adguard_home_checksum | default(omit, true) }}"
   when: >
     (not adguard_home_executable_stat.stat.exists)
-    or (adguard_home_version_exists_check | changed)
+    or (adguard_home_version_exists_check is changed)
 
 - name: unarchive adguard-home
   unarchive:
