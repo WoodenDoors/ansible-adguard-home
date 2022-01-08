@@ -4,7 +4,6 @@ Ansible role to install the ad-blocking DNS-server [AdGuard Home](https://github
 
 ## role variables
 ```yaml
-adguard_home_version: '0.106.3'
 adguard_home_base_path: /opt/adguard_home
 adguard_home_user: root
 ```
