@@ -1,5 +1,5 @@
 ---
-adguard_home_version: '0.107.57'
+adguard_home_version: '0.107.61'
 
 adguard_home_base_path: /opt/adguard_home
 adguard_home_user: root
@@ -12,6 +12,6 @@ adguard_home_arch: "{{ (ansible_architecture == 'x86_64') | ternary('amd64', 'ar
 adguard_home_archive: "AdGuardHome_linux_{{ adguard_home_arch }}.tar.gz"
 adguard_home_download_url: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v{{ adguard_home_version }}/{{ adguard_home_archive }}"
 
-adguard_home_checksum: 'sha256:b40b6e316832f8731420c6ca2d064e3153bbcfae54b8f2199c7a49af5218a49c' #armv7
+adguard_home_checksum: 'sha256:ed817377acfd7821811e5c988038b013e72943312e4081c361f6c2a296a962bc' #armv7
 
 adguard_home_tmp_path: /tmp/
